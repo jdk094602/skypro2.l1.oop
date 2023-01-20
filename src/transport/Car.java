@@ -13,7 +13,7 @@ public class Car {
     private final String capacity; // вместимость
     private boolean winterTyres; // признак типа резины (TRUE - зимняя, FALSE - летняя)
 
-    public Car(String brand, String model, float engineVolume, String color, int year, String country
+    public Car(String brand, String model, float engineVolume, String color, int year, String country,
                String gearType, String bodyType, String regNum, String capacity, boolean winterTyres
     ) {
         this.brand = brand;
@@ -26,7 +26,7 @@ public class Car {
         this.bodyType = bodyType;
         this.setRegNum(regNum);
         this.capacity = capacity;
-        this.isWinterTyres(winterTyres);
+        this.setWinterTyres(winterTyres);
     }
 
     private static String fillString(String checkString, String defaultString) {
@@ -72,19 +72,19 @@ public class Car {
     }
 
     public String getGearType() {
-        return fillString (gearType,"manual");;
+        return fillString (gearType,"manual");
     }
 
     public String getBodyType() {
-        return fillString (bodyType,"sedan");;
+        return fillString (bodyType,"sedan");
     }
 
     public String getRegNum() {
-        return fillString (regNum,"unregistered");;
+        return fillString (regNum,"unregistered");
     }
 
     public String getCapacity() {
-        return fillString (capacity,"unknown");;
+        return fillString (capacity,"unknown");
     }
 
     public boolean isWinterTyres() {
