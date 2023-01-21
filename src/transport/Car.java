@@ -32,7 +32,12 @@ public class Car {
     private static String fillString(String checkString, String defaultString) {
         return checkString == null || checkString == "" || checkString.isBlank() ? defaultString : checkString;
     }
-
+//    public void changeTires (int monthNum) {
+//        this.setWinterTyres(monthNum >= 4 && monthNum <= 10 ? false : true);
+//    }
+    public static void changeTires (int monthNum, Car car) {
+        car.setWinterTyres(monthNum >= 4 && monthNum <= 10 ? false : true);
+    }
 
     public String getBrand() {
         return fillString (brand,"default");
@@ -111,6 +116,11 @@ public class Car {
                 ", цвет '" + getColor() + '\'' +
                 ", год выпуска - " + getYear() +
                 ", страна производства - '" + getCountry() + '\'' + "\n"
+                + "     коробка передач - '" + getGearType() + '\''
+                + ", тип кузова - '" + getBodyType() + '\''
+                + ", регистрационный № - '" + getRegNum() + '\''
+                + ", вместимость - '" + getCapacity() + '\''
+                + ", зимняя резина - '" + isWinterTyres() + '\''  + "\n"
                 ;
     }
 }
