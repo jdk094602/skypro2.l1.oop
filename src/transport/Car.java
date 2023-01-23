@@ -13,8 +13,49 @@ public class Car {
     private final String capacity; // вместимость
     private boolean winterTyres; // признак типа резины (TRUE - зимняя, FALSE - летняя)
 
+    public Key key;
+
+    public class Key {
+        private final boolean isInvoice; // бесключевой доступ ?
+        private final boolean isRemoteEngineStart; // удаленный запуск двигателя ?
+
+        public Key(boolean isInvoice, boolean isRemoteEngineStart) {
+            this.isInvoice =  isInvoice != true ? false : isInvoice;
+            this.isRemoteEngineStart = isRemoteEngineStart != true ? false : isRemoteEngineStart;
+        }
+
+        public boolean isInvoice() {
+            return isInvoice;
+        }
+
+        public boolean isRemoteEngineStart() {
+            return isRemoteEngineStart;
+        }
+
+        @Override
+        public String toString() {
+            return "            ключ :" +
+                    "Бесключевой доступ =" + isInvoice() +
+                    ", Удалённый запуск=" + isRemoteEngineStart() +
+                    "\n";
+        }
+
+        void KeyIsTurn() {
+            System.out.println("Key is turn in ejection ");
+        }
+    }
+
+    // создадим 2 конструктора, первый - с сокращённым количеством параметров
+//    public Car(String brand, String model, float engineVolume, String color, int year, String country,
+//               String gearType, String bodyType, String regNum, String capacity, boolean winterTyres
+//    ) {
+//        this(brand, model, engineVolume, color, year, country, gearType, bodyType, regNum, capacity, winterTyres,
+//        false, false);
+//    }
     public Car(String brand, String model, float engineVolume, String color, int year, String country,
                String gearType, String bodyType, String regNum, String capacity, boolean winterTyres
+//               , Key key // если бы класс Key был статическим
+//               , boolean isInvoice, boolean isRemoteEngineStart
     ) {
         this.brand = brand;
         this.model = model;
@@ -27,6 +68,8 @@ public class Car {
         this.setRegNum(regNum);
         this.capacity = capacity;
         this.setWinterTyres(winterTyres);
+        //        this.key = key;  // если бы класс Key был статическим
+
     }
 
     private static String fillString(String checkString, String defaultString) {
@@ -108,6 +151,10 @@ public class Car {
         this.winterTyres = winterTyres;
     }
 
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "Автомобиль " +
@@ -121,7 +168,12 @@ public class Car {
                 + ", регистрационный № - '" + getRegNum() + '\''
                 + ", вместимость - '" + getCapacity() + '\''
                 + ", зимняя резина - '" + isWinterTyres() + '\''  + "\n"
-                ;
+//              + this.key.toString()
+//                + "            ключ :"
+//                + "Бесключевой доступ =" + key.isInvoice()
+//              +  ", Удалённый запуск=" + key.isRemoteEngineStart()
+
+        ;
     }
 }
 
